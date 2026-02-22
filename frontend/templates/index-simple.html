@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Surveillance Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">🛡️ Safety Monitor</h1>
+                <div class="status-badge" id="systemStatus">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Ready</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-grid">
+            
+            <!-- Left Column -->
+            <div class="left-column">
+                
+                <!-- Upload Card -->
+                <div class="card upload-card">
+                    <h2 class="card-title">Upload Media</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="fileInput" accept="image/*,video/*" hidden>
+                        <div class="upload-content">
+                            <div class="upload-icon">📁</div>
+                            <p class="upload-title">Drop your file here</p>
+                            <p class="upload-subtitle">or click to browse</p>
+                            <p class="upload-formats">PNG, JPG, MP4, AVI, MOV</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="analyzeBtn" disabled>
+                        <span>🔍</span>
+                        Analyze
+                    </button>
+                </div>
+
+                <!-- Stats Card -->
+                <div class="card stats-card">
+                    <h2 class="card-title">Detection Summary</h2>
+                    <div class="stats-list">
+                        <div class="stat-item">
+                            <span class="stat-label">PPE Violations</span>
+                            <span class="stat-value stat-warning" id="statPPE">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Fire Detected</span>
+                            <span class="stat-value stat-danger" id="statFire">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Smoke Detected</span>
+                            <span class="stat-value stat-info" id="statSmoke">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Alerts</span>
+                            <span class="stat-value" id="statAlerts">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                
+                <!-- Preview Card -->
+                <div class="card preview-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Analysis Result</h2>
+                        <button class="btn-icon" id="downloadBtn" disabled title="Download">
+                            💾
+                        </button>
+                    </div>
+                    <div class="preview-container" id="previewContainer">
+                        <div class="preview-empty">
+                            <div class="empty-icon">🖼️</div>
+                            <p>No analysis yet</p>
+                            <p class="empty-subtitle">Upload and analyze a file to see results</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Card -->
+                <div class="card progress-card" id="progressCard" style="display: none;">
+                    <h2 class="card-title">Processing...</h2>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p class="progress-text" id="progressText">Starting analysis...</p>
+                </div>
+
+                <!-- Alerts Card -->
+                <div class="card alerts-card" id="alertsCard" style="display: none;">
+                    <h2 class="card-title">Recent Alerts</h2>
+                    <div class="alerts-list" id="alertsList">
+                        <div class="alert-empty">No alerts yet</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Initialize Modal -->
+        <div class="modal" id="initModal">
+            <div class="modal-content">
+                <h2 class="modal-title">Initialize System</h2>
+                <p class="modal-subtitle">Enter the paths to your YOLO models</p>
+                
+                <div class="form-group">
+                    <label>PPE Detection Model</label>
+                    <input type="text" id="ppeModelPath" placeholder="/path/to/ppe_model.pt" class="input">
+                </div>
+                
+                <div class="form-group">
+                    <label>Fire Detection Model</label>
+                    <input type="text" id="fireModelPath" placeholder="/path/to/fire_model.pt" class="input">
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-primary" id="initBtn">Initialize</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "total_alerts": 3,
+  "alerts": [
+    {
+      "timestamp": "2026-02-15T21:03:38.650765",
+      "frame_number": 1,
+      "alert_type": "smoke",
+      "severity": 1,
+      "message": "Smoke detected. Area: 6442 px\u00b2 | Confidence: 78.4%",
+      "snapshot": "surveillance_logs\\alert_snapshots\\alert_smoke_20260215_210338.jpg"
+    },
+    {
+      "timestamp": "2026-02-15T21:03:38.689384",
+      "frame_number": 1,
+      "alert_type": "fire",
+      "severity": 2,
+      "message": "FIRE DETECTED! Area: 45170 px\u00b2 | Confidence: 52.8%",
+      "snapshot": "surveillance_logs\\alert_snapshots\\alert_fire_20260215_210338.jpg"
+    },
+    {
+      "timestamp": "2026-02-15T21:03:38.731686",
+      "frame_number": 1,
+      "alert_type": "ppe_violation",
+      "severity": 1,
+      "message": "WARNING: Person #0 missing PPE: Hardhat",
+      "snapshot": null
+    }
+  ]
+}
