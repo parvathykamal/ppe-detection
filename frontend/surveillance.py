@@ -1,15 +1,4 @@
-"""
-Integrated Safety Surveillance System
-Model: snehilsanyal/Construction-Site-Safety-PPE-Detection (YOLOv8n, 100 epochs)
-Classes: Hardhat, Mask, NO-Hardhat, NO-Mask, NO-Safety Vest, Person,
-         Safety Cone, Safety Vest, machinery, vehicle
 
-Key features:
-  - Per-person PPE association (no cross-person confusion)
-  - Direct violation class alerts (NO-Hardhat etc.)
-  - Parallel PPE + Fire inference
-  - Real-time / image / video modes
-"""
 
 import cv2
 import numpy as np
